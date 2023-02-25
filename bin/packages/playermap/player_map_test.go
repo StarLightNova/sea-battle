@@ -35,12 +35,22 @@ func TestPlayerMapConstructorReturnsEmptyMap(t *testing.T) {
   }
 }
 
+func TestGetCellOfTheMapMethod(t *testing.T) {
+   playerMap, _ := NewPlayerMap()
+
+  playerMap.GetCell("A", 1)
+
+  if playerMap.GetCell("A", 1) != "E" {
+    t.Fatal("The GetCell() function returned non-empty cell.")
+  }
+
+}
+
 func TestMapDamageMethod(t *testing.T) {
   playerMap, _ := NewPlayerMap()
-
   playerMap.GetDamage("A", 1)
 
-  if playerMap.theMap["A"][1] != "X" {
+  if playerMap.GetCell("A", 1) != "X" {
     t.Fatal("The damage did not set by the method GetDamage.")
   }
 }
