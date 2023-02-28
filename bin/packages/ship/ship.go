@@ -5,32 +5,13 @@ import (
   "errors"
 )
 
-type ShipClass string;
-type ShipOccupy int;
-
-const (
-  Carrier ShipClass = "Carrier"
-  Battleship ShipClass = "Battleship"
-  Destroyer ShipClass = "Destroyer"
-  Submarine ShipClass = "Submarine"
-  PatrolBoat ShipClass = "Patrol Boat"
-)
-
 type Ship struct {
   class ShipClass;
   cellsToOccupy ShipOccupy;
 }
 
 func NewShip(class ShipClass) (*Ship, error) {
-  shipCells := map[ShipClass]ShipOccupy {
-    Carrier: 5,
-    Battleship: 4,
-    Destroyer: 3,
-    Submarine: 3,
-    PatrolBoat: 2,
-  }
-
-  _, isShipExists := shipCells[class]
+  _, isShipExists := shipsAndOccupyCells[class]
 
   if !isShipExists {
     return nil, errors.New("The ship of this class does not exist.")
@@ -38,7 +19,7 @@ func NewShip(class ShipClass) (*Ship, error) {
 
   return &Ship {
     class: class,
-    cellsToOccupy: shipCells[class],
+    cellsToOccupy: shipsAndOccupyCells[class],
   }, nil
 }
 
