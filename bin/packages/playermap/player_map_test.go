@@ -48,9 +48,20 @@ func TestGetCellOfTheMapMethod(t *testing.T) {
 
 func TestMapDamageMethod(t *testing.T) {
   playerMap, _ := NewPlayerMap()
+
   playerMap.GetDamage("A", 1)
 
   if playerMap.GetCell("A", 1) != "X" {
     t.Fatal("The damage did not set by the method GetDamage.")
+  }
+}
+
+func TestMapPlaceUnit(t *testing.T) {
+  playerMap, _ := NewPlayerMap()
+
+  playerMap.PlaceUnit("B", 3)
+
+  if playerMap.GetCell("B", 3) != "S" {
+    t.Fatal("The unit's cells not placed.")
   }
 }
