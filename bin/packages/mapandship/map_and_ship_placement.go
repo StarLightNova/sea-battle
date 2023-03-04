@@ -3,27 +3,34 @@ package mapandship
 import (
 	"sort"
 	"github.com/StarLightNova/sea-battle/bin/packages/playermap"
+  "github.com/StarLightNova/sea-battle/bin/packages/coordinates"
 )
 
-// TODO:: Create a struct to handle the parameters: row, column
-func (masi MapAndShip) placeShip(startRow, endRow string, startColumn, endColumn int) {
-  allRowKeys := playermap.GetLetterCoordinates();
-
-  startRowIndex := sort.SearchStrings(allRowKeys[:], startRow)
-  endRowIndex := sort.SearchStrings(allRowKeys[:], endRow)
-
+func (masi MapAndShip) placeShip(coor coordinates.Coordinates) {
   // Horizontal placing
-  if startRow == endRow {
-    for startColumn <= endColumn {
-      masi.playerMap.PlaceUnit(startRow, startColumn)
+  if coor.StartRow == coor.EndRow {
+    masi.forPlacer(coor, coor.StartColumn, Horizontal)
+  } else if coor.StartColumn == coor.EndColumn {
+    masi.forPlacer(coor, 0, Vertical)
+  }
+}
 
-      startColumn++
-    }
-  } else if startColumn == endColumn {
+func (masi MapAndShip) forPlacer(coor coordinates.Coordinates, incrementer int, axis Axis) {
+  if axis == Vertical {
+    allRowKeys := playermap.GetLetterCoordinates();
+    startRowIndex := sort.SearchStrings(allRowKeys[:], coor.StartRow)
+    endRowIndex := sort.SearchStrings(allRowKeys[:], coor.EndRow)
+
     for startRowIndex <= endRowIndex {
-      masi.playerMap.PlaceUnit(allRowKeys[startRowIndex], startColumn)
+      masi.playerMap.PlaceUnit(allRowKeys[startRowIndex], coor.StartColumn)
 
       startRowIndex++
+    }
+  } else {
+    for coor.StartColumn <= coor.EndColumn {
+      masi.playerMap.PlaceUnit(coor.StartRow, incrementer)
+
+      incrementer++
     }
   }
 }

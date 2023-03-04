@@ -36,7 +36,7 @@ func TestPlayerMapConstructorReturnsEmptyMap(t *testing.T) {
 }
 
 func TestGetCellOfTheMapMethod(t *testing.T) {
-   playerMap, _ := NewPlayerMap()
+   playerMap, _ := New()
 
   playerMap.GetCell("A", 1)
 
@@ -47,7 +47,7 @@ func TestGetCellOfTheMapMethod(t *testing.T) {
 }
 
 func TestMapDamageMethod(t *testing.T) {
-  playerMap, _ := NewPlayerMap()
+  playerMap, _ := New()
 
   playerMap.GetDamage("A", 1)
 
@@ -57,7 +57,7 @@ func TestMapDamageMethod(t *testing.T) {
 }
 
 func TestMapPlaceUnit(t *testing.T) {
-  playerMap, _ := NewPlayerMap()
+  playerMap, _ := New()
 
   playerMap.PlaceUnit("B", 3)
 

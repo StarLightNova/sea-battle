@@ -7,7 +7,7 @@ import (
 func TestNewCoordinates(t *testing.T) {
   newCoor, _ := New("A1:A3")
 
-  if newCoor.startRow != "A" || newCoor.endColumn != 3 || newCoor.endRow != "A" || newCoor.startColumn != 1 {
+  if newCoor.StartRow != "A" || newCoor.EndColumn != 3 || newCoor.EndRow != "A" || newCoor.StartColumn != 1 {
     t.Fatal("The coordinate constructor gave incorrect coordinates")
   }
 }

@@ -28,3 +28,11 @@ var standardShipsQuantity = []ShipQuantity{
   newShipAndQuantity(ship.PatrolBoat, 2),
 }
 
+type Axis string
+
+const (
+  Horizontal = "horizontal"
+  Vertical = "vertical"
+  X = Horizontal
+  Y = Vertical
+)
