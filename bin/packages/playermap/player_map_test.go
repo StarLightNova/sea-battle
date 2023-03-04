@@ -5,7 +5,7 @@ import (
 )
 
 func TestPlayerMapCreated(t *testing.T) {
-  _, error := NewPlayerMap()
+  _, error := New()
 
   if error != nil {
     t.Fatal("Constructor FAILED! Got a bad PlayerMap object.")
@@ -13,7 +13,7 @@ func TestPlayerMapCreated(t *testing.T) {
 }
 
 func TestPlayerMapSizings(t *testing.T) {
-  playerMap, _ := NewPlayerMap()
+  playerMap, _ := New()
 
   height := len(playerMap.theMap)
   width := len(playerMap.theMap["A"])
@@ -24,7 +24,7 @@ func TestPlayerMapSizings(t *testing.T) {
 }
 
 func TestPlayerMapConstructorReturnsEmptyMap(t *testing.T) {
-  playerMap, _ := NewPlayerMap()
+  playerMap, _ := New()
 
   for _, arrayOfLetters := range playerMap.theMap {
     for _, letter := range arrayOfLetters {

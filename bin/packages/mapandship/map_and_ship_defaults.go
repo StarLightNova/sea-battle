@@ -1,4 +1,4 @@
-package mapandshipinterface
+package mapandship
 
 import "github.com/StarLightNova/sea-battle/bin/packages/ship"
 
@@ -9,7 +9,7 @@ type ShipQuantity struct {
 }
 
 func newShipByClass(class ship.ShipClass) *ship.Ship {
-  tempShip, _ := ship.NewShip(class)
+  tempShip, _ := ship.New(class)
   return tempShip
 }
 

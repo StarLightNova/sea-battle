@@ -10,7 +10,7 @@ type Ship struct {
   cellsToOccupy ShipOccupy;
 }
 
-func NewShip(class ShipClass) (*Ship, error) {
+func New(class ShipClass) (*Ship, error) {
   _, isShipExists := shipsAndOccupyCells[class]
 
   if !isShipExists {

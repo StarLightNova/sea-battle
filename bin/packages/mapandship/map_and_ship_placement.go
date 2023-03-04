@@ -1,17 +1,12 @@
-package mapandshipinterface
+package mapandship
 
 import (
 	"sort"
-
 	"github.com/StarLightNova/sea-battle/bin/packages/playermap"
 )
 
-// func (masi MapAndShipInterface) placeShipsOnTheMap() {
-
-// }
-
 // TODO:: Create a struct to handle the parameters: row, column
-func (masi MapAndShipInterface) placeShip(startRow, endRow string, startColumn, endColumn int) {
+func (masi MapAndShip) placeShip(startRow, endRow string, startColumn, endColumn int) {
   allRowKeys := playermap.GetLetterCoordinates();
 
   startRowIndex := sort.SearchStrings(allRowKeys[:], startRow)

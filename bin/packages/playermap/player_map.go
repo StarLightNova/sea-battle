@@ -6,7 +6,7 @@ type PlayerMap struct {
   theMap map[string][]string
 }
 
-func NewPlayerMap() (*PlayerMap, error) {
+func New() (*PlayerMap, error) {
   pureMap := make(map[string][]string)
 
   fillPureMap(pureMap)

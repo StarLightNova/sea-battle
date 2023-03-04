@@ -1,11 +1,11 @@
-package mapandshipinterface
+package mapandship
 
 import (
   "testing"
 )
 
 func TestMapShipUnitsPlacement(t *testing.T) {
-  masi := NewMapAndShipInitializer()
+  masi := New()
 
   masi.placeShip("A", "B", 1, 1)
 

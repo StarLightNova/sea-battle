@@ -1,22 +1,22 @@
-package mapandshipinterface
+package mapandship
 
 import (
 	"fmt"
 	"github.com/StarLightNova/sea-battle/bin/packages/playermap"
 )
 
-type MapAndShipInterface struct {
+type MapAndShip struct {
   ships []ShipQuantity;
   playerMap playermap.PlayerMap;
 }
 
-func NewMapAndShipInitializer() MapAndShipInterface {
-  pMap, _ := playermap.NewPlayerMap()
+func New() MapAndShip {
+  pMap, _ := playermap.New()
 
-  return MapAndShipInterface{standardShipsQuantity, *pMap}
+  return MapAndShip{standardShipsQuantity, *pMap}
 }
 
-func (masi MapAndShipInterface) String() string {
+func (masi MapAndShip) String() string {
   ans := ""
 
   for _, ship := range masi.ships {

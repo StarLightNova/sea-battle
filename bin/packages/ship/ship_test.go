@@ -6,7 +6,7 @@ import (
 )
 
 func TestObjectShip(t *testing.T) {
-  _, error := NewShip("Carrier")
+  _, error := New("Carrier")
 
   if error != nil {
     t.Fatal("Can not create a new Ship. Constructor error.")
@@ -14,7 +14,7 @@ func TestObjectShip(t *testing.T) {
 }
 
 func TestNewShipNoneClass(t *testing.T) {
-  newShip, error := NewShip("carrier")
+  newShip, error := New("carrier")
 
   if newShip != nil &&  error == nil  {
     t.Fatal("The constructor of the Ship returned actual ship, instead of the erorr.")
