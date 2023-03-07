@@ -16,12 +16,12 @@ type Coordinates struct {
 }
 
 func New(strCordinates string) (*Coordinates, error) {
-  regexPattern, _ := regexp.Compile("(\\w{1}\\d{1})(:| |-)(\\w{1}\\d{1})")
+  regexPattern, _ := regexp.Compile("(\\w{1}(10|\\d{1}))(:| |-)(\\w{1}(10|\\d{1}))")
 
   if regexPattern.MatchString(strCordinates) {
     matchedGroupes := regexPattern.FindStringSubmatch(strCordinates)
     startGroup := strings.ToUpper(matchedGroupes[1])
-    endGroup := strings.ToUpper(matchedGroupes[3])
+    endGroup := strings.ToUpper(matchedGroupes[4])
     startColumn, _ := strconv.Atoi(startGroup[1:])
     endColumn, _ := strconv.Atoi(endGroup[1:])
 

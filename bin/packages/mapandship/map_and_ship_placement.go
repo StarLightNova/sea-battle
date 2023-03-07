@@ -2,8 +2,8 @@ package mapandship
 
 import (
 	"sort"
+	"github.com/StarLightNova/sea-battle/bin/packages/coordinates"
 	"github.com/StarLightNova/sea-battle/bin/packages/playermap"
-  "github.com/StarLightNova/sea-battle/bin/packages/coordinates"
 )
 
 func (masi MapAndShip) placeShip(coor coordinates.Coordinates) {
@@ -27,7 +27,7 @@ func (masi MapAndShip) forPlacer(coor coordinates.Coordinates, incrementer int, 
       startRowIndex++
     }
   } else {
-    for coor.StartColumn <= coor.EndColumn {
+    for incrementer <= coor.EndColumn {
       masi.playerMap.PlaceUnit(coor.StartRow, incrementer)
 
       incrementer++
