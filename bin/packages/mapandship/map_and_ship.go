@@ -6,8 +6,8 @@ import (
 )
 
 type MapAndShip struct {
-  ships []ShipQuantity;
-  playerMap playermap.PlayerMap;
+  Ships []ShipQuantity;
+  PlayerMap playermap.PlayerMap;
 }
 
 func New() MapAndShip {
@@ -19,11 +19,11 @@ func New() MapAndShip {
 func (masi MapAndShip) String() string {
   ans := ""
 
-  for _, ship := range masi.ships {
-    ans += fmt.Sprintf("%s\nAmount: %d\n", ship.ship, ship.quantity)
+  for _, ship := range masi.Ships {
+    ans += fmt.Sprintf("%s\nAmount: %d\n", ship.Ship, ship.quantity)
   }
 
-  ans += fmt.Sprint("The map: \n", masi.playerMap)
+  ans += fmt.Sprint("The map: \n", masi.PlayerMap)
 
   return ans
 }

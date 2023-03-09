@@ -7,7 +7,7 @@ import (
 
 // Standard ships and quantity in the game.
 type ShipQuantity struct {
-  ship *ship.Ship;
+  Ship *ship.Ship;
   quantity int;
 }
 
@@ -18,7 +18,7 @@ func newShipByClass(class ship.ShipClass) *ship.Ship {
 
 func newShipAndQuantity(class ship.ShipClass, quantity int) ShipQuantity {
   return ShipQuantity{
-    ship: newShipByClass(class),
+    Ship: newShipByClass(class),
     quantity: quantity,
   }
 }

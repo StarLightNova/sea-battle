@@ -22,13 +22,13 @@ func (masi MapAndShip) forPlacer(coor coordinates.Coordinates, incrementer int, 
     endRowIndex := sort.SearchStrings(allRowKeys[:], coor.EndRow)
 
     for startRowIndex <= endRowIndex {
-      masi.playerMap.PlaceUnit(allRowKeys[startRowIndex], coor.StartColumn)
+      masi.PlayerMap.PlaceUnit(allRowKeys[startRowIndex], coor.StartColumn)
 
       startRowIndex++
     }
   } else {
     for incrementer <= coor.EndColumn {
-      masi.playerMap.PlaceUnit(coor.StartRow, incrementer)
+      masi.PlayerMap.PlaceUnit(coor.StartRow, incrementer)
 
       incrementer++
     }

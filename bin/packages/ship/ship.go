@@ -7,7 +7,7 @@ import (
 
 type Ship struct {
   class ShipClass;
-  cellsToOccupy ShipOccupy;
+  CellsToOccupy ShipOccupy;
 }
 
 func New(class ShipClass) (*Ship, error) {
@@ -19,10 +19,10 @@ func New(class ShipClass) (*Ship, error) {
 
   return &Ship {
     class: class,
-    cellsToOccupy: shipsAndOccupyCells[class],
+    CellsToOccupy: shipsAndOccupyCells[class],
   }, nil
 }
 
 func (ship Ship) String() string {
-  return fmt.Sprintf("The ship: %s, occupies: %d", ship.class, ship.cellsToOccupy)
+  return fmt.Sprintf("The ship: %s, occupies: %d", ship.class, ship.CellsToOccupy)
 }

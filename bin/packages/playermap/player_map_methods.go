@@ -23,11 +23,11 @@ func fillPureMap(pureMap map[string][]string) {
    /*
    * Fill the playerMap variable by keys from 
    * `getLetterCoordinates` and by numbers till `Width`.
-   * All the cells should be 'empty' by letter 'E'.
+   * All the cells should be 'empty' by letter ' ' (space).
   */
 
   for _, key := range GetLetterCoordinates() {
-    pureMap[key] = []string{"E", "E", "E", "E", "E", "E", "E", "E", "E", "E"}
+    pureMap[key] = []string{" ", " ", " ", " ", " ", " ", " ", " ", " ", " "}
   }
 }
 

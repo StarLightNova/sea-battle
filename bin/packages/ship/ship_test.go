@@ -2,7 +2,6 @@ package ship
 
 import (
   "testing"
-  // "fmt"
 )
 
 func TestObjectShip(t *testing.T) {

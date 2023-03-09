@@ -28,7 +28,7 @@ func TestPlayerMapConstructorReturnsEmptyMap(t *testing.T) {
 
   for _, arrayOfLetters := range playerMap.theMap {
     for _, letter := range arrayOfLetters {
-      if letter != "E" {
+      if letter != " " {
         t.Fatal("Brand new player map is *NOT* fully empty.")
       }
     }
@@ -40,7 +40,7 @@ func TestGetCellOfTheMapMethod(t *testing.T) {
 
   playerMap.GetCell("A", 1)
 
-  if playerMap.GetCell("A", 1) != "E" {
+  if playerMap.GetCell("A", 1) != " " {
     t.Fatal("The GetCell() function returned non-empty cell.")
   }
 
