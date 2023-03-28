@@ -21,7 +21,7 @@ func (masi MapAndShip) forPlacer(coor coordinates.Coordinates, incrementer int, 
     startRowIndex := sort.SearchStrings(allRowKeys[:], coor.StartRow)
     endRowIndex := sort.SearchStrings(allRowKeys[:], coor.EndRow)
 
-    for startRowIndex <= endRowIndex {
+    for startRowIndex < endRowIndex {
       masi.PlayerMap.PlaceUnit(allRowKeys[startRowIndex], coor.StartColumn)
 
       startRowIndex++
@@ -34,3 +34,46 @@ func (masi MapAndShip) forPlacer(coor coordinates.Coordinates, incrementer int, 
     }
   }
 }
+
+func (masi MapAndShip) uniqPlacement() {
+  for _, ship := range masi.Ships {
+    shipAmount := ship.quantity
+
+    for shipAmount > 0 {
+      randomCoordinates := coordinates.RandomCoordinatesFor(*ship.Ship)
+
+      for masi.isOverlapping(randomCoordinates) {
+        randomCoordinates = coordinates.RandomCoordinatesFor(*ship.Ship)
+      }
+
+      masi.placeShip(randomCoordinates)
+
+      shipAmount--
+    }
+  }
+}
+
+func (masi MapAndShip) isOverlapping(coor coordinates.Coordinates) bool {
+  if (coor.StartRow == coor.EndRow) {
+    for i := coor.StartColumn; i < coor.EndColumn; i++ {
+      if masi.PlayerMap.GetCell(coor.StartRow, i) == "S" {
+        return true;
+      }
+    }
+  } else {
+    allRowKeys := playermap.GetLetterCoordinates();
+    startRowIndex := sort.SearchStrings(allRowKeys[:], coor.StartRow)
+    endRowIndex := sort.SearchStrings(allRowKeys[:], coor.EndRow)
+
+    for startRowIndex <= endRowIndex {
+      if masi.PlayerMap.GetCell(allRowKeys[startRowIndex], coor.StartColumn) == "S" {
+        return true;
+      }
+
+      startRowIndex++
+    }
+  }
+
+  return false
+}
+

@@ -90,7 +90,7 @@ func randomStartEndRow(cellOccupation ship.ShipOccupy) (start, end string) {
     end = start
     start = playermap.GetLetterCoordinates()[index - int(cellOccupation)]
   } else {
-    end = playermap.GetLetterCoordinates()[index + int(cellOccupation)]
+    end = playermap.GetLetterCoordinates()[index + int(cellOccupation) - 1]
   }
 
   return

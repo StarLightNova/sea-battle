@@ -34,11 +34,7 @@ func TestDummyCoordinatesPlacemen(t *testing.T) {
 func TestRandomCoordinatesForShips(t *testing.T) {
   masi := New()
   
-  for _, ship := range masi.Ships {
-    randomCoordinates := coordinates.RandomCoordinatesFor(*ship.Ship)
-    
-    masi.placeShip(randomCoordinates)
-  }
+  masi.uniqPlacement()
 
   fmt.Println(masi)
 }
