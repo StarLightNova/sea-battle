@@ -34,7 +34,7 @@ func TestDummyCoordinatesPlacemen(t *testing.T) {
 func TestRandomCoordinatesForShips(t *testing.T) {
   masi := New()
   
-  masi.uniqPlacement()
+  masi.UniqPlacement()
 
   fmt.Println(masi)
 }

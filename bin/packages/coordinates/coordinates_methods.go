@@ -74,9 +74,9 @@ func randomStartEndColumn(cellOccupation ship.ShipOccupy) (start, end int) {
 
   if start + int(cellOccupation) > 10 {
     end = start
-    start = start - int(cellOccupation)
+    start = start - int(cellOccupation) + 1
   } else {
-    end = start + int(cellOccupation)
+    end = start + int(cellOccupation) - 1
   }
 
   return
