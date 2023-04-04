@@ -1,11 +1,10 @@
 package coordinates
 
 import (
-    "math/rand"
-    "time"
-
-    "github.com/StarLightNova/sea-battle/bin/packages/ship"
-    "github.com/StarLightNova/sea-battle/bin/packages/playermap"
+	"math/rand"
+	"time"
+	"github.com/StarLightNova/sea-battle/bin/packages/playermap"
+	"github.com/StarLightNova/sea-battle/bin/packages/ship"
 )
 
 func RandomCoordinatesFor(ship ship.Ship) Coordinates {
@@ -65,7 +64,7 @@ func randomStartEndColumn(cellOccupation ship.ShipOccupy) (start, end int) {
 
     if start + int(cellOccupation) > 10 {
         end = start
-        start = start - int(cellOccupation) + 1
+        start = abs(start - int(cellOccupation) + 1)
     } else {
         end = start + int(cellOccupation) - 1
     }
@@ -78,10 +77,18 @@ func randomStartEndRow(cellOccupation ship.ShipOccupy) (start, end string) {
 
     if index + int(cellOccupation) > 10 {
         end = start
-        start = playermap.GetLetterCoordinates()[index - int(cellOccupation)]
+        start = playermap.GetLetterCoordinates()[abs(index - int(cellOccupation) + 1)]
     } else {
         end = playermap.GetLetterCoordinates()[index + int(cellOccupation) - 1]
     }
 
     return
+}
+
+func abs(number int) int {
+    if number >= 0 {
+        return number
+    }
+
+    return -number
 }
