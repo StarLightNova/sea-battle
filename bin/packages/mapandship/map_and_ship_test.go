@@ -1,40 +1,40 @@
 package mapandship
 
 import (
-	"testing"
-	"github.com/StarLightNova/sea-battle/bin/packages/coordinates"
-  "fmt"
+    "testing"
+    "github.com/StarLightNova/sea-battle/bin/packages/coordinates"
+    "fmt"
 )
 
 func TestMapShipUnitsPlacement(t *testing.T) {
-  masi := New()
-  coor, _ := coordinates.New("a1:b1")
+    masi := New()
+    coor, _ := coordinates.New("a1:b1")
 
-  masi.placeShip(*coor)
+    masi.placeShip(*coor)
 
-  if masi.PlayerMap.GetCell("A", 1) != "S" && masi.PlayerMap.GetCell("B", 1) != "S" {
-    t.Fatal("The ship did not placed on the passed coordinates.")
-  }
+    if masi.PlayerMap.GetCell("A", 1) != "S" && masi.PlayerMap.GetCell("B", 1) != "S" {
+        t.Fatal("The ship did not placed on the passed coordinates.")
+    }
 }
 
 func TestDummyCoordinatesPlacemen(t *testing.T) {
-  masi := New()
+    masi := New()
 
-  for _, coordinate := range dummyCoordinates {
-    masi.placeShip(coordinate)
-  }
+    for _, coordinate := range dummyCoordinates {
+        masi.placeShip(coordinate)
+    }
 
-  dummyCoor := dummyCoordinates[2]
+    dummyCoor := dummyCoordinates[2]
 
-  if masi.PlayerMap.GetCell(dummyCoor.StartRow, dummyCoor.StartColumn) != "S" {
-    t.Fatal("The dummy coordinate ship placement is incorrect.")
-  }
+    if masi.PlayerMap.GetCell(dummyCoor.StartRow, dummyCoor.StartColumn) != "S" {
+        t.Fatal("The dummy coordinate ship placement is incorrect.")
+    }
 }
 
 func TestRandomCoordinatesForShips(t *testing.T) {
-  masi := New()
-  
-  masi.UniqPlacement()
+    masi := New()
 
-  fmt.Println(masi)
+    masi.UniqPlacement()
+
+    fmt.Println(masi)
 }
