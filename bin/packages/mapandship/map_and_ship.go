@@ -1,7 +1,6 @@
 package mapandship
 
 import (
-    "fmt"
     "github.com/StarLightNova/sea-battle/bin/packages/playermap"
 )
 
@@ -17,13 +16,9 @@ func New() MapAndShip {
 }
 
 func (masi MapAndShip) String() string {
-    ans := ""
+    return masi.PlayerMap.String()
+}
 
-    for _, ship := range masi.Ships {
-        ans += fmt.Sprintf("%s\nAmount: %d\n", ship.Ship, ship.quantity)
-    }
-
-    ans += fmt.Sprint("The map: \n", masi.PlayerMap)
-
-    return ans
+func (masi MapAndShip) ShadowString() string {
+    return masi.PlayerMap.ShadowString()
 }

@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-// import "github.com/StarLightNova/sea-battle/bin/packages/playermap"
+import (
+    "github.com/StarLightNova/sea-battle/bin/packages/game"
+)
 
 func main() {
-    fmt.Println("Hello")
-    // playerOneMap, _ := playermap.NewPlayerMap()
-
-
+    game.New()
 }

@@ -1,7 +1,7 @@
 package playersinit
 
 import (
-    "github.com/StarLightNova/sea-battle/bin/packages/mapandship"
+	"github.com/StarLightNova/sea-battle/bin/packages/mapandship"
 )
 
 type Players struct {

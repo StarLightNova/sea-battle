@@ -18,10 +18,9 @@ func TestPlayersMapsandShipPlacements(t *testing.T) {
 
     players.PutShips()
 
-    fmt.Println("The first Player:", players.FirstPlayer)
+    fmt.Println("The first Player:\n", players.FirstPlayer)
     fmt.Println()
-    fmt.Println("Second Player", players.SecondPlayer)
-
+    fmt.Println("Second Player:\n", players.SecondPlayer)
 
     if error != nil {
         t.Fatal("The players map are incorrect.")
