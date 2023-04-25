@@ -1,12 +1,25 @@
 package game
 
 import (
-    "fmt"
+    "github.com/StarLightNova/sea-battle/bin/packages/playersinit"
 )
 
 func New() {
-    fmt.Println("New game created")
-
     players := initializePlayers()
     players.PutShips()
+
+    announceAGame()
+    yourBoard(players.FirstPlayer.PlayerMap)
+
+    readyToGo()
+
+    if promptToStartAGame() {
+        startGame(players)
+    }
+
+    goodbye()
+}
+
+func startGame(players playersinit.Players) {
+    // TODO
 }

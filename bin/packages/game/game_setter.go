@@ -6,7 +6,8 @@ import (
 )
 
 func initializePlayers() playersinit.Players {
-    fmt.Println("Initializing Players")
+    fmt.Println("New game created.")
+    fmt.Println("Initializing Players...")
 
     players, error := playersinit.New()
 
@@ -14,6 +15,5 @@ func initializePlayers() playersinit.Players {
         return players
     }
 
-    fmt.Println("Error! Players initializer did not work.")
-    return playersinit.Players{}
+    panic("Error! Players initializer did not work.")
 }
