@@ -65,3 +65,17 @@ func TestMapPlaceUnit(t *testing.T) {
         t.Fatal("The unit's cells not placed.")
     }
 }
+
+func TestIsDeafeated(t *testing.T) {
+    playerMap, _ := New()
+
+    playerMap.PlaceUnit("B", 3)
+    playerMap.GetDamage("B", 3)
+
+    playerMap.PlaceUnit("G", 5)
+    playerMap.GetDamage("G", 5)
+
+    if !playerMap.IsDefeated() {
+        t.Fatal("The player is not defeated. But should be.")
+    }
+}
