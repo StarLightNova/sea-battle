@@ -2,12 +2,19 @@ package playermap
 
 import "fmt"
 
-const Width = 10
-const Height = Width
+const (
+    Width int = 10
+    Height = Width
+)
 
 func (playerMap PlayerMap) GetDamage(row string, column int) {
-    playerMap.theMap[row][column - 1] = "X"
-    playerMap.ShadowMap[row][column - 1] = "X"
+    if playerMap.GetCell(row, column) == "S" {
+        playerMap.theMap[row][column - 1] = "X"
+        playerMap.ShadowMap[row][column - 1] = "X"
+    } else {
+        playerMap.theMap[row][column - 1] = "M"
+        playerMap.ShadowMap[row][column - 1] = "M"
+    }
 }
 
 func (playerMap PlayerMap) PlaceUnit(row string, column int) {
@@ -16,6 +23,18 @@ func (playerMap PlayerMap) PlaceUnit(row string, column int) {
 
 func (playerMap PlayerMap) GetCell(row string, column int) string {
     return playerMap.theMap[row][column - 1]
+}
+
+func (playerMap PlayerMap) IsDefeated() bool {
+    for i := range playerMap.theMap {
+        for _, jVal := range playerMap.theMap[i] {
+            if jVal == "S" {
+                return false
+            }
+        }
+    }
+
+    return true
 }
 
 func GetLetterCoordinates() [Width]string {
