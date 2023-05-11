@@ -1,12 +1,6 @@
 package coordinates
 
-import (
-    "errors"
-    "fmt"
-    "regexp"
-    "strconv"
-    "strings"
-)
+import "fmt"
 
 type Coordinates struct {
     StartRow string;
@@ -15,25 +9,14 @@ type Coordinates struct {
     EndColumn int;
 }
 
-func New(strCordinates string) (*Coordinates, error) {
-    regexPattern, _ := regexp.Compile("(\\w{1}(10|\\d{1}))(:| |-)(\\w{1}(10|\\d{1}))")
+func New(strCoordinates string) (*Coordinates, error) {
+    coordinates, error := StringToCoordinates(strCoordinates)
 
-    if regexPattern.MatchString(strCordinates) {
-        matchedGroupes := regexPattern.FindStringSubmatch(strCordinates)
-        startGroup := strings.ToUpper(matchedGroupes[1])
-        endGroup := strings.ToUpper(matchedGroupes[4])
-        startColumn, _ := strconv.Atoi(startGroup[1:])
-        endColumn, _ := strconv.Atoi(endGroup[1:])
-
-        return &Coordinates{
-            StartRow: startGroup[:1],
-            StartColumn: startColumn,
-            EndRow: endGroup[:1],
-            EndColumn: endColumn,
-        }, nil
+    if error != nil {
+        return nil, error
     }
 
-    return nil, errors.New("The given coordinates are incorrect.")
+    return &coordinates, nil
 }
 
 func (coor Coordinates) String() string {

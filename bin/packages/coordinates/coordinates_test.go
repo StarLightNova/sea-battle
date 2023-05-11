@@ -1,7 +1,8 @@
 package coordinates
 
 import (
-    "testing"
+    "reflect"
+	"testing"
 )
 
 func TestNewCoordinates(t *testing.T) {
@@ -9,6 +10,14 @@ func TestNewCoordinates(t *testing.T) {
 
     if newCoor.StartRow != "A" || newCoor.EndColumn != 10 || newCoor.EndRow != "A" || newCoor.StartColumn != 1 {
         t.Fatal("The coordinate constructor gave incorrect coordinates")
+    }
+}
+
+func TestHalfCoordinates(t *testing.T) {
+    row, column := StringToRowColumn("e3")
+
+    if reflect.TypeOf(row).Name() != "string" && reflect.TypeOf(column).Name() != "int" {
+        t.Fatal("The return type of the StringToRowColumn is incorrect.")
     }
 }
 

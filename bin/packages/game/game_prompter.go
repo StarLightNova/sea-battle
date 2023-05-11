@@ -3,12 +3,8 @@ package game
 import (
     "fmt"
     "strings"
-    "regexp"
-    "strconv"
 	"github.com/StarLightNova/sea-battle/bin/packages/playermap"
-    "math/rand"
-	"time"
-
+	"github.com/StarLightNova/sea-battle/bin/packages/coordinates"
 )	
 
 func promptToStartAGame() bool {
@@ -29,26 +25,6 @@ func promptToStartAGame() bool {
     }
 }
 
-func formatCoordinates(userCoordindates string) (row string, column int) {
-    regexPattern, _ := regexp.Compile("(\\w{1})(10|\\d{1})")
-
-    if regexPattern.MatchString(userCoordindates) {
-        matchedGroupes := regexPattern.FindStringSubmatch(userCoordindates)
-        row = strings.ToUpper(matchedGroupes[1])
-        column, _ = strconv.Atoi(matchedGroupes[2])
-    }
-
-    return
-}
-
-func generateRandomCoordinate() (row string, column int) {
-    rand.Seed(time.Now().UnixNano())
-    row = playermap.GetLetterCoordinates()[rand.Intn(len(playermap.GetLetterCoordinates()))]
-    column = rand.Intn(10) + 1
-
-    return
-}
-
 func makeMove(attacker, opponent playermap.PlayerMap) {
     opponentsShadowMap(opponent)
 
@@ -58,12 +34,13 @@ func makeMove(attacker, opponent playermap.PlayerMap) {
 
     fmt.Scanln(&userInput)
 
-    opponent.GetDamage(formatCoordinates(userInput))
+    opponent.GetDamage(coordinates.StringToRowColumn(userInput))
     
     opponentsShadowMap(opponent)
 }
 
 func botMakeMove(attacker, opponent playermap.PlayerMap) {
-    opponent.GetDamage(generateRandomCoordinate())
+    opponent.GetDamage(coordinates.RandomHalfCoordinates())
+
     yourBoardHasAttacked(opponent)
 }
