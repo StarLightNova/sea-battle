@@ -49,6 +49,7 @@ func TestGetCellOfTheMapMethod(t *testing.T) {
 func TestMapDamageMethod(t *testing.T) {
     playerMap, _ := New()
 
+    playerMap.PlaceUnit("A", 1)
     playerMap.GetDamage("A", 1)
 
     if playerMap.GetCell("A", 1) != "X" {

@@ -7,7 +7,6 @@ import (
 )
 
 func (masi MapAndShip) placeShip(coor coordinates.Coordinates) {
-    // Horizontal placing
     if coor.StartRow == coor.EndRow {
         masi.forPlacer(coor, coor.StartColumn, Horizontal)
     } else if coor.StartColumn == coor.EndColumn {
@@ -17,9 +16,7 @@ func (masi MapAndShip) placeShip(coor coordinates.Coordinates) {
 
 func (masi MapAndShip) forPlacer(coor coordinates.Coordinates, incrementer int, axis Axis) {
     if axis == Vertical {
-        allRowKeys := playermap.GetLetterCoordinates();
-        startRowIndex := sort.SearchStrings(allRowKeys[:], coor.StartRow)
-        endRowIndex := sort.SearchStrings(allRowKeys[:], coor.EndRow)
+        allRowKeys, startRowIndex, endRowIndex := verticalKeysAndIndexes(coor)
 
         for startRowIndex <= endRowIndex {
             masi.PlayerMap.PlaceUnit(allRowKeys[startRowIndex], coor.StartColumn)
@@ -36,6 +33,9 @@ func (masi MapAndShip) forPlacer(coor coordinates.Coordinates, incrementer int, 
 }
 
 func (masi MapAndShip) UniqPlacement() {
+    // NOTE: Not critical "for" loops. 
+    // since the ships' class amount is {5}, ship quantity {1, 2}, 
+    // and "isOverlapping's" cases are {2, 3, 4, 5}.
     for _, ship := range masi.Ships {
         shipAmount := ship.quantity
 
@@ -61,9 +61,7 @@ func (masi MapAndShip) isOverlapping(coor coordinates.Coordinates) bool {
             }
         }
     } else {
-        allRowKeys := playermap.GetLetterCoordinates();
-        startRowIndex := sort.SearchStrings(allRowKeys[:], coor.StartRow)
-        endRowIndex := sort.SearchStrings(allRowKeys[:], coor.EndRow)
+        allRowKeys, startRowIndex, endRowIndex := verticalKeysAndIndexes(coor)
 
         for startRowIndex <= endRowIndex {
             if masi.PlayerMap.GetCell(allRowKeys[startRowIndex], coor.StartColumn) == "S" {
@@ -75,5 +73,14 @@ func (masi MapAndShip) isOverlapping(coor coordinates.Coordinates) bool {
     }
 
     return false
+}
+
+// This line is too long, would be better to use a struct.
+func verticalKeysAndIndexes(coor coordinates.Coordinates) (allRowKeys [playermap.Width]string, startRowIndex int, endRowIndex int) {
+    allRowKeys = playermap.GetLetterCoordinates();
+    startRowIndex = sort.SearchStrings(allRowKeys[:], coor.StartRow)
+    endRowIndex = sort.SearchStrings(allRowKeys[:], coor.EndRow)
+
+    return
 }
 
