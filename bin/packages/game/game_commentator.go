@@ -7,17 +7,20 @@ import (
 )
 
 func announceAGame() {
-    time.Sleep(3 * time.Second)
-    fmt.Println("\nWelcome to the Sea Battle!\nI hope both of you can swim.")
+    fmt.Print("\nWelcome to the Sea Battle! ")
     time.Sleep(2 * time.Second)
-    fmt.Println("\nRules can be accesses by command in terminal prompt: [cat rules.txt] (without '[' and ']')")
+    fmt.Println("I hope both of you can swim.")
+
     time.Sleep(2 * time.Second)
+    fmt.Print("\nRules can be accesses by command in the terminal prompt: ")
+    time.Sleep(2 * time.Second)
+    fmt.Println("> cat rules.txt")
 }
 
 func yourBoard(playermap playermap.PlayerMap) {
     fmt.Println("Generating a random board with ships...")
     time.Sleep(1 * time.Second)
-    fmt.Println("\nYour randomly generated board looks like this:")
+    fmt.Println("\nYour randomly generated board:")
     fmt.Println(playermap)
 }
 
@@ -32,7 +35,7 @@ func yourBoardHasAttacked(playermap playermap.PlayerMap) {
 }
 
 func howToAttackCoordinates() {
-    fmt.Println("\n [INFO] You can attack prompting like these examples: A1, B6 etc,.")
+    fmt.Println("\n [INFO] You can attack prompting like these examples: A1, B6, c3, j10 etc,.")
 }
 
 func readyToGo() {

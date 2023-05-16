@@ -3,19 +3,19 @@ package playermap
 import "fmt"
 
 func mapPrinter(playerMap map[string][]string) string {
-    returnString := fmt.Sprintf("     1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10\n")
+    singleMap := fmt.Sprintf("%s\n", MAP_COLUMNS)
 
-    returnString += "===========================================\n"
+    singleMap += fmt.Sprintf("%s\n", COLUMN_BOTTOM_DIVIDER)
 
     for _, key := range GetLetterCoordinates() {
-        returnString += fmt.Sprintf(" %s )", key)
+        singleMap += fmt.Sprintf(" %s )", key)
 
         for _, letter := range playerMap[key] {
-            returnString += fmt.Sprintf(" %s |", letter)
+            singleMap += fmt.Sprintf(" %s |", letter)
         }
 
-        returnString += "\n-------------------------------------------\n"
+        singleMap += fmt.Sprintf("\n%s\n", BOTTOM_DIVIDER)
     }
 
-    return returnString
+    return singleMap
 }

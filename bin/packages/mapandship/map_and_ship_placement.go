@@ -56,7 +56,7 @@ func (masi MapAndShip) UniqPlacement() {
 func (masi MapAndShip) isOverlapping(coor coordinates.Coordinates) bool {
     if (coor.StartRow == coor.EndRow) {
         for i := coor.StartColumn; i <= coor.EndColumn; i++ {
-            if masi.PlayerMap.GetCell(coor.StartRow, i) == "S" {
+            if masi.PlayerMap.GetCell(coor.StartRow, i) == playermap.SHIP {
                 return true;
             }
         }
@@ -64,7 +64,7 @@ func (masi MapAndShip) isOverlapping(coor coordinates.Coordinates) bool {
         allRowKeys, startRowIndex, endRowIndex := verticalKeysAndIndexes(coor)
 
         for startRowIndex <= endRowIndex {
-            if masi.PlayerMap.GetCell(allRowKeys[startRowIndex], coor.StartColumn) == "S" {
+            if masi.PlayerMap.GetCell(allRowKeys[startRowIndex], coor.StartColumn) == playermap.SHIP {
                 return true;
             }
 

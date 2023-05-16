@@ -1,28 +1,28 @@
 package playermap
 
 func (playerMap PlayerMap) GetDamage(row string, column int) {
-    if playerMap.GetCell(row, column) == "S" {
-        playerMap.theMap[row][column - 1] = "X"
-        playerMap.ShadowMap[row][column - 1] = "X"
-    } else {
-        playerMap.theMap[row][column - 1] = "M"
-        playerMap.ShadowMap[row][column - 1] = "M"
+    if playerMap.GetCell(row, column) == SHIP {
+        playerMap.TheMap[row][column - 1] = HIT
+        playerMap.ShadowMap[row][column - 1] = HIT
+    } else if playerMap.GetCell(row, column) == EMPTY {
+        playerMap.TheMap[row][column - 1] = MISS
+        playerMap.ShadowMap[row][column - 1] = MISS
     }
 }
 
 func (playerMap PlayerMap) PlaceUnit(row string, column int) {
-    playerMap.theMap[row][column - 1] = "S"
+    playerMap.TheMap[row][column - 1] = SHIP
 }
 
 func (playerMap PlayerMap) GetCell(row string, column int) string {
-    return playerMap.theMap[row][column - 1]
+    return playerMap.TheMap[row][column - 1]
 }
 
 func (playerMap PlayerMap) IsDefeated() bool {
     // If non "S" remains on the map, it is a lost case.
-    for i := range playerMap.theMap {
-        for _, jVal := range playerMap.theMap[i] {
-            if jVal == "S" {
+    for i := range playerMap.TheMap {
+        for _, jVal := range playerMap.TheMap[i] {
+            if jVal == SHIP {
                 return false
             }
         }

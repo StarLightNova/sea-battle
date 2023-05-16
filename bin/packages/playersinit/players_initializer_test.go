@@ -26,3 +26,15 @@ func TestPlayersMapsandShipPlacements(t *testing.T) {
         t.Fatal("The players map are incorrect.")
     }
 }
+
+func TestPlayersCurrentAndOpponentsMap(t *testing.T) {
+    players, error := New()
+
+    players.PutShips()
+    
+    fmt.Println(players.EntireMap())
+
+    if error != nil {
+        t.Fatal("Can't print the entire map.")
+    }
+}

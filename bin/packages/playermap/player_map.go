@@ -1,7 +1,7 @@
 package playermap
 
 type PlayerMap struct {
-    theMap map[string][]string
+    TheMap map[string][]string
     ShadowMap map[string][]string
 }
 
@@ -13,13 +13,13 @@ func New() (*PlayerMap, error) {
     fillPureMap(shadowMap)
 
     return &PlayerMap {
-        theMap: pureMap,
+        TheMap: pureMap,
         ShadowMap: shadowMap,
     }, nil
 }
 
 func (playerMap PlayerMap) String() string {
-    return mapPrinter(playerMap.theMap)
+    return mapPrinter(playerMap.TheMap)
 }
 
 func (playerMap PlayerMap) ShadowString() string {

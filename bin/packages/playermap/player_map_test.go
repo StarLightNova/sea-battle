@@ -15,8 +15,8 @@ func TestPlayerMapCreated(t *testing.T) {
 func TestPlayerMapSizings(t *testing.T) {
     playerMap, _ := New()
 
-    height := len(playerMap.theMap)
-    width := len(playerMap.theMap["A"])
+    height := len(playerMap.TheMap)
+    width := len(playerMap.TheMap["A"])
 
     if height != width || height != 10 || width != 10 {
         t.Fatal("The sizes of the map are different and not 10.")
@@ -26,7 +26,7 @@ func TestPlayerMapSizings(t *testing.T) {
 func TestPlayerMapConstructorReturnsEmptyMap(t *testing.T) {
     playerMap, _ := New()
 
-    for _, arrayOfLetters := range playerMap.theMap {
+    for _, arrayOfLetters := range playerMap.TheMap {
         for _, letter := range arrayOfLetters {
             if letter != " " {
                 t.Fatal("Brand new player map is *NOT* fully empty.")

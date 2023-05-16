@@ -15,9 +15,9 @@ func promptToStartAGame() bool {
 
         loweredUsersPrompt := strings.ToLower(usersInput)
 
-        if loweredUsersPrompt == "y" {
+        if loweredUsersPrompt == YES {
             return true
-        } else if loweredUsersPrompt == "n" {
+        } else if loweredUsersPrompt == NO {
             return false
         } else {
             fmt.Println("Your reply is not understandable by computer. (y/n)")
@@ -26,8 +26,6 @@ func promptToStartAGame() bool {
 }
 
 func makeMove(attacker, opponent playermap.PlayerMap) {
-    opponentsShadowMap(opponent)
-
     var userInput string
 
     howToAttackCoordinates()
@@ -35,12 +33,8 @@ func makeMove(attacker, opponent playermap.PlayerMap) {
     fmt.Scanln(&userInput)
 
     opponent.GetDamage(coordinates.StringToRowColumn(userInput))
-    
-    opponentsShadowMap(opponent)
 }
 
 func botMakeMove(attacker, opponent playermap.PlayerMap) {
     opponent.GetDamage(coordinates.RandomHalfCoordinates())
-
-    yourBoardHasAttacked(opponent)
 }
