@@ -1,5 +1,18 @@
 # Sea battle
 
+# Content
+1. [Introduction](#introduction)
+    1. [📜 Rules](#-rules)
+2. [🧑‍🔬 Further Improvements](#-further-improvements)
+3. [📦 Component (package) Description](#component-package-description)
+    1. [Ship, damage, empty cells and other constants](#ship-damage-empty-cells-and-other-constants)
+    2. [🗺️ PlayerMap](#%EF%B8%8Fplayermap)
+    3. [🚢 Ships](#ships)
+    4. [📍 Coordinates](#-coordinates)
+    5. [Map And Ship](#map-and-ship)
+    6. [Players Initializer](#players-initializer)
+    7. [🎮 Game](#-game)
+
 # Introduction
 
 This for the terminals.
@@ -91,7 +104,7 @@ The ship types
 | Constructor (string) | Creates a Ship according to the parameters class. |  |
 | String [interface] | Returns the Ship description info. | string |
 
-## 🗺️ Coordinates
+## 📍 Coordinates
 
 | Type | Struct |
 | --- | --- |
